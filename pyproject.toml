@@ -1,0 +1,60 @@
+[project]
+name = "swissbiopics-mcp"
+version = "0.1.0"
+description = "An MCP (Model Context Protocol) server for SwissBioPics — an interactive library of cell images for visualizing subcellular location data."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "SwissBioPics-MCP Contributors" }
+]
+keywords = [
+    "mcp",
+    "swissbiopics",
+    "bioinformatics",
+    "subcellular-localization",
+    "cell-biology",
+    "model-context-protocol",
+    "ai-tools",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "mcp[cli]>=1.0.0",
+    "httpx>=0.27.0",
+    "lxml>=5.0.0",
+]
+
+[project.scripts]
+swissbiopics-mcp = "swissbiopics_mcp.server:main"
+
+[project.urls]
+Homepage = "https://www.swissbiopics.org/"
+Repository = "https://github.com/ZengZichao/SwissBioPics-MCP"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/swissbiopics_mcp"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
